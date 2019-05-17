@@ -8,10 +8,10 @@ curr_state = BoxModel([i for i in range(len(p))]).draw() #Random initial state
 
 for i in range(num_sim):
     prop_state = ((curr_state - 1) % len(p)) if random.uniform(0, 1) < 0.5 else ((curr_state + 1) % len(p)) #Make random walk left or right
-    if p[prop_state] > p[curr_state]: #If proposed state has higher prob, accept
+    if p[prop_state] > p[curr_state]: #If proposed state has higher prob, accept the state
         curr_state = prop_state
     else:
-        acceptance_prob = p[prop_state] / p[curr_state] #I proposed state has lower prob, accept with prob of ratio
+        acceptance_prob = p[prop_state] / p[curr_state] #If proposed state has lower prob, accept the state with prob of ratio
         if random.uniform(0, 1) < acceptance_prob:
             curr_state = prop_state
     states_visited.append(curr_state)
